@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>producIo - Factory Production Management</title>
+<meta name="description" content="producIo helps factories track production, manage products and brands, and keep a full audit history in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="logo">produc<span>Io</span></a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="auth-actions">
+      <a href="login" class="btn btn-ghost">Log in</a>
+      <a href="signup" class="btn btn-primary">Sign up</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="mobile-auth">
+      <a href="login" class="btn btn-ghost">Log in</a>
+      <a href="signup" class="btn btn-primary">Sign up</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top" aria-roledescription="carousel" aria-label="Factory highlights">
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide is-active">
+        <img src="\assets\images\photo-1581091226825-a6a2a5aee158.avif" alt="Factory floor with industrial machinery in operation" loading="eager">
+      </div>
+      <div class="hero-slide">
+        <img src="\assets\images\premium_photo-1682144509812-4734c830b486.avif" alt="Worker monitoring production line equipment" loading="lazy">
+      </div>
+      <div class="hero-slide">
+        <img src="\assets\images\photo-1518770660439-4636190af475.avif" alt="Automated robotic arms assembling products" loading="lazy">
+      </div>
+      <div class="hero-slide">
+        <img src="\assets\images\photo-1530124566582-a618bc2615dc.avif" alt="Warehouse shelves stocked with packaged goods" loading="lazy">
+      </div>
+    </div>
+
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Run your business floor on one simple system</h1>
+        <p>producIo tracks every product, brand, and batch you make - so your team always knows what shipped, what's pending, and what happened last month.</p>
+        <div class="hero-cta">
+          <a href="signup" class="btn btn-primary btn-lg">Get started free</a>
+          <a href="login" class="btn btn-outline btn-lg">Log in</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">‹</button>
+    <button class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">›</button>
+
+    <div class="hero-dots" id="heroDots" role="tablist" aria-label="Slide navigation"></div>
+  </section>
+
+  <section class="intro">
+    <div class="container">
+      <p class="eyebrow">What is producIo</p>
+      <h2>One dashboard for everything your factory produces</h2>
+      <p class="lead">Most small and mid-sized factories track production in spreadsheets that get out of sync the moment two people touch them. producIo replaces that with a single, shared system - built specifically for the day-to-day of recording output, organizing products and brands, and reviewing what happened, whenever you need to.</p>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+
+      <article class="feature-row">
+        <div class="feature-media">
+          <img src="/assets\images\photo-1551288049-bebda4e38f71.avif" alt="Dashboard screen showing production quantity charts" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="feature-icon" aria-hidden="true">📊</span>
+          <h3>Live production dashboard</h3>
+          <p>See total quantity produced at a glance, filter by product, brand, month, or year, and log new production records in seconds. The dashboard is the first thing your team sees - and it's built to answer "what did we make today?" without digging through files.</p>
+        </div>
+      </article>
+
+      <article class="feature-row feature-row-reverse">
+        <div class="feature-media">
+          <img src="\assets\images\photo-1565610222536-ef125c59da2e.avif" alt="Worker setting up product catalog on a tablet" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="feature-icon" aria-hidden="true">🏷️</span>
+          <h3>Product and brand setup</h3>
+          <p>Add the products you manufacture and the brands you produce for, once. Every other part of producIo - records, filters, reports - pulls from this same list, so naming stays consistent across your whole team.</p>
+        </div>
+      </article>
+
+      <article class="feature-row">
+        <div class="feature-media">
+          <img src="\assets\images\photo-1454165804606-c3d57bc86b40.avif" alt="Clipboard and paperwork representing a production log" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="feature-icon" aria-hidden="true">🕘</span>
+          <h3>Full history and audit log</h3>
+          <p>Every record you add is kept in a searchable history with product, brand, quantity, and date - so you can answer "who logged what, and when?" months later, not just today.</p>
+        </div>
+      </article>
+
+      <article class="feature-row feature-row-reverse">
+        <div class="feature-media">
+          <img src="\assets\images\photo-1460925895917-afdab827c52f.avif" alt="Charts and graphs showing trends over time" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="feature-icon" aria-hidden="true">📈</span>
+          <h3>Filtering and trend reports</h3>
+          <p>Slice production data by product, brand, or time period to spot trends as they happen. The product trend chart shows output over time, so slowdowns and spikes are visible immediately, not discovered at month-end.</p>
+        </div>
+      </article>
+
+      <article class="feature-row">
+        <div class="feature-media">
+          <img src="\assets\images\photo-1563013544-824ae1b704d3.avif" alt="Padlock icon over a laptop representing secure login" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="feature-icon" aria-hidden="true">🔒</span>
+          <h3>Secure, multi-user access</h3>
+          <p>Each team member logs in with their own account. Whether it's one supervisor or a full shift team, everyone works from the same live data - no shared spreadsheets, no overwritten files.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps to get your factory running on producIo</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <h3>Set up products and brands</h3>
+          <p>List what you make and who you make it for. This becomes the foundation every record is built on.</p>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <h3>Log production daily</h3>
+          <p>Pick a product, a brand, and a quantity. Each entry is timestamped automatically - no manual dating needed.</p>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <h3>Review and filter anytime</h3>
+          <p>Check the dashboard for totals and trends, or dig into the full history when you need the details.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-band-inner">
+      <h2>Ready to get your production data in order?</h2>
+      <a href="signup" class="btn btn-primary btn-lg">Create your account</a>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <p class="eyebrow">FAQ</p>
+      <h2>Common questions</h2>
+
+      <div class="faq-list">
+        <details>
+          <summary>Is producIo free to use?</summary>
+          <p>Registration is free to start. Sign up from the button above to create your factory account.</p>
+        </details>
+        <details>
+          <summary>Can multiple people from my team use one account?</summary>
+          <p>Each team member should register their own login. This keeps your history log accurate about who recorded what.</p>
+        </details>
+        <details>
+          <summary>Does producIo work on mobile devices?</summary>
+          <p>Yes. The dashboard, setup, and history pages all adapt to phone and tablet screens, so you can log production from the factory floor.</p>
+        </details>
+        <details>
+          <summary>Can I export or filter historical data?</summary>
+          <p>Yes. The dashboard lets you filter by product, brand, month, and year, and the history page lets you page through every record that's ever been logged.</p>
+        </details>
+        <details>
+  <summary>What types of factories can use producIo?</summary>
+  <p>producIo is designed for manufacturers of all sizes. Whether you produce food, beverages, cosmetics, pharmaceuticals, or other goods, you can record and track daily production.</p>
+</details>
+
+<details>
+  <summary>Can I edit or delete a production record?</summary>
+  <p>Yes. Authorized users can update or remove production records when corrections are needed, helping keep your data accurate.</p>
+</details>
+
+<details>
+  <summary>Is my production data secure?</summary>
+  <p>Yes. Your production records are stored securely, and only authorized users with valid accounts can access your factory's data.</p>
+</details>
+
+<details>
+  <summary>Can I track production for multiple products?</summary>
+  <p>Yes. You can record production for different products and brands, then filter your records to analyze performance over time.</p>
+</details>
+
+<details>
+  <summary>Do I need to install any software?</summary>
+  <p>No. producIo runs in your web browser, so there's nothing to install. Simply sign in and start recording production.</p>
+</details>
+
+<details>
+  <summary>Can I view previous production records?</summary>
+  <p>Yes. The history page stores all your recorded production entries, making it easy to review past activity whenever you need it.</p>
+</details>
+
+<details>
+  <summary>How do I get started?</summary>
+  <p>Create a free account, set up your factory and products, then begin logging your daily production records from the dashboard.</p>
+</details>
+<details>
+  <summary>I deleted my brand and my products are gone. Why?</summary>
+  <p>A product cannot exist without a brand. Deleting a brand automatically removes all products associated with it. Make sure you no longer need those products before deleting a brand.</p>
+</details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="#top" class="logo">produc<span>Io</span></a>
+    <p>&copy; <span id="year"></span> producIo. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

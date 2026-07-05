@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brands — producIo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/brands.css">
+</head>
+<body>
+
+  <!-- Single hamburger, outside page-layout, matches dashboard.html -->
+  <button
+    class="nav-hamburger"
+    id="navHamburger"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="sideNav"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="side-nav" id="sideNav" aria-label="Main navigation">
+    <div class="side-nav-inner">
+      <a href="/" class="nav-logo">produc<span>Io</span></a>
+      <ul class="nav-links">
+        <li><a href="/dashboard" class="nav-link" data-route="/dashboard">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span>Dashboard</span>
+        </a></li>
+        <li><a href="/products" class="nav-link" data-route="/products">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.06 15.93 0 13.36 0c-1.33 0-2.52.58-3.36 1.5C9.16.58 7.97 0 6.64 0 4.07 0 2 2.06 2 4.64c0 .48.11.92.18 1.36H0v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V6zm-6.64-4c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H12.1A2.97 2.97 0 0 1 12 4.64C12 3.74 12.46 2 13.36 2zM6.64 2c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H6.26A2.97 2.97 0 0 1 6 4.64C6 3.74 6.74 2 6.64 2zM4 8h7v12H4V8zm9 12V8h7v12h-7z"/></svg>
+          <span>Products</span>
+        </a></li>
+        <li><a href="/brands" class="nav-link" data-route="/brands">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span>Brands</span>
+        </a></li>
+        <li><a href="/history" class="nav-link" data-route="/history">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.95-2.05L6.7 18.3A8.98 8.98 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+          <span>History</span>
+        </a></li>
+      </ul>
+      <button class="nav-link nav-logout" id="logoutBtn">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+  
+  <main class="dashboard-main" id="main">
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="page-header-text">
+        <h1>Brands</h1>
+        <p class="page-sub" id="brandCount">—</p>
+      </div>
+      <button class="btn btn-primary" id="createBrandBtn">
+        <svg aria-hidden="true" viewBox="0 0 24 24" style="width:16px;height:16px">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </svg>
+        New brand
+      </button>
+    </div>
+
+    <!-- Create form (collapsed by default) -->
+    <div class="create-panel" id="createPanel" hidden>
+      <div class="create-panel-inner">
+        <h2>New brand</h2>
+        <div class="create-form-row">
+          <div class="field field-inline">
+            <label for="newBrandName">Brand name</label>
+            <input
+              type="text"
+              id="newBrandName"
+              placeholder="e.g. Coca-Cola"
+              maxlength="80"
+              autocomplete="off"
+            >
+            <span class="field-error" id="newBrandError"></span>
+          </div>
+          <div class="create-actions">
+            <button class="btn btn-ghost" id="createCancelBtn">Cancel</button>
+            <button class="btn btn-primary" id="createSaveBtn">
+              <span class="btn-label">Create</span>
+              <span class="btn-spinner" hidden aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="search-icon">
+          <path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input
+          type="search"
+          id="brandSearch"
+          placeholder="Search brands…"
+          aria-label="Search brands"
+          autocomplete="off"
+        >
+        <button class="search-clear" id="searchClear" hidden aria-label="Clear search">✕</button>
+      </div>
+    </div>
+
+    <!-- Page-level error -->
+    <div class="page-error" id="pageError" hidden>
+      <p id="pageErrorMsg">Failed to load brands.</p>
+      <button class="btn btn-ghost" id="retryBtn">Retry</button>
+    </div>
+
+    <!-- Skeleton -->
+    <div class="skeleton-wrap" id="skeletonWrap" aria-busy="true">
+      <div class="brands-grid">
+        <div class="skeleton sk-brand-card"></div>
+        <div class="skeleton sk-brand-card"></div>
+        <div class="skeleton sk-brand-card"></div>
+        <div class="skeleton sk-brand-card"></div>
+        <div class="skeleton sk-brand-card"></div>
+        <div class="skeleton sk-brand-card"></div>
+      </div>
+    </div>
+
+    <!-- Brands grid -->
+    <div id="brandsGrid" class="brands-grid" hidden aria-live="polite"></div>
+
+    <!-- Empty states -->
+    <div class="empty-state" id="emptyAll" hidden>
+      <span aria-hidden="true">🏷️</span>
+      <p>No brands yet.<br>Create your first one above.</p>
+    </div>
+    <div class="empty-state" id="emptySearch" hidden>
+      <span aria-hidden="true">🔍</span>
+      <p>No brands match "<strong id="emptySearchTerm"></strong>".</p>
+    </div>
+
+  </main>
+
+<div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/brands.js"></script>
+</html>

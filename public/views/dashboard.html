@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — producIo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+  <!-- ── Nav toggle (hamburger) ───────────────────────────────────────── -->
+  <button
+    class="nav-hamburger"
+    id="navHamburger"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="sideNav"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- ── Side navigation ──────────────────────────────────────────────── -->
+  <nav class="side-nav" id="sideNav" aria-label="Main navigation">
+    <div class="side-nav-inner">
+      <a href="/" class="nav-logo">produc<span>Io</span></a>
+
+      <ul class="nav-links">
+        <li>
+          <a href="/dashboard" class="nav-link" data-route="/dashboard">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/products" class="nav-link" data-route="/products">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.06 15.93 0 13.36 0c-1.33 0-2.52.58-3.36 1.5C9.16.58 7.97 0 6.64 0 4.07 0 2 2.06 2 4.64c0 .48.11.92.18 1.36H0v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V6zm-6.64-4c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H12.1A2.97 2.97 0 0 1 12 4.64C12 3.74 12.46 2 13.36 2zM6.64 2c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H6.26A2.97 2.97 0 0 1 6 4.64C6 3.74 6.74 2 6.64 2zM4 8h7v12H4V8zm9 12V8h7v12h-7z"/></svg>
+            <span>Products</span>
+          </a>
+        </li>
+        <li>
+          <a href="/brands" class="nav-link" data-route="/brands">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>Brands</span>
+          </a>
+        </li>
+        <li>
+          <a href="/history" class="nav-link" data-route="/history">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.95-2.05L6.7 18.3A8.98 8.98 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+            <span>History</span>
+          </a>
+        </li>
+      </ul>
+
+      <button class="nav-link nav-logout" id="logoutBtn">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Nav backdrop (mobile) ────────────────────────────────────────── -->
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+<main class="dashboard-main" id="main">
+
+  <!-- Page-level error -->
+  <div class="page-error" id="pageError" hidden>
+    <p id="pageErrorMsg">Something went wrong loading your dashboard.</p>
+    <button class="btn btn-ghost" id="retryBtn">Retry</button>
+  </div>
+
+  <!-- Skeleton -->
+  <div class="skeleton-wrap" id="skeletonWrap" aria-busy="true" aria-label="Loading dashboard">
+    <div class="skeleton sk-heading"></div>
+    <div class="skeleton sk-sub"></div>
+    <div class="skeleton-grid">
+      <div class="skeleton sk-card"></div>
+      <div class="skeleton sk-card"></div>
+      <div class="skeleton sk-card"></div>
+    </div>
+  </div>
+
+  <!-- Real content -->
+  <div class="dash-content" id="dashContent" hidden>
+
+    <!-- ── Greeting ─────────────────────────────────────────────────────── -->
+    <section class="greeting-section">
+      <h1 class="greeting">
+        Hello,
+        <button class="username-btn" id="usernameBtn" aria-label="Edit username">
+          <span id="usernameDisplay"></span>
+          <svg class="edit-icon" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+          </svg>
+        </button> 👋
+      </h1>
+      <p class="greeting-sub" id="greetingSub"></p>
+    </section>
+
+    <!-- ── Username edit (single instance) ──────────────────────────────── -->
+    <div class="username-edit-wrap" id="usernameEditWrap" hidden>
+      <div class="username-edit-card">
+        <label for="usernameInput" class="username-edit-label">
+          What should we call you?
+        </label>
+        <input type="text" id="usernameInput" class="username-edit-input"
+          maxlength="50" autocomplete="off" spellcheck="false">
+        <p class="username-edit-error" id="usernameEditError" hidden></p>
+        <div class="username-edit-actions">
+          <button class="btn btn-ghost" id="usernameCancelBtn">Cancel</button>
+          <button class="btn btn-primary" id="usernameSaveBtn" disabled>Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Widgets ────────────────────────────────────────────────────────── -->
+    <div class="widgets-grid">
+
+      <section class="widget widget-brands" aria-labelledby="brandsTitle">
+        <div class="widget-header">
+          <h2 id="brandsTitle">Top 5 Brands</h2>
+        </div>
+        <div id="brandsContent"></div>
+      </section>
+
+      <section class="widget widget-donut" aria-labelledby="donutTitle">
+        <div class="widget-header">
+          <h2 id="donutTitle">Production by Brand</h2>
+        </div>
+        <div id="donutContent" class="donut-wrap">
+          <div class="chart-container donut-chart-container">
+            <canvas id="donutChart"
+              aria-label="Donut chart showing production by brand"></canvas>
+          </div>
+          <ul class="donut-legend" id="donutLegend" aria-label="Brand colour key"></ul>
+        </div>
+        <div class="empty-state" id="donutEmpty" hidden>
+          <span aria-hidden="true">🍩</span>
+          <p>Nothing to see here yet.<br>Add some production records to get started.</p>
+        </div>
+      </section>
+
+      <section class="widget widget-trend" aria-labelledby="trendTitle">
+        <div class="widget-header">
+          <h2 id="trendTitle">Product Trend</h2>
+          <div class="trend-controls">
+            <select id="trendPeriod" aria-label="Select time period">
+              <option value="3">Last 3 months</option>
+              <option value="6" selected>Last 6 months</option>
+              <option value="12">Last 12 months</option>
+            </select>
+          </div>
+        </div>
+        <div class="chart-container trend-chart-container" id="trendContent">
+          <canvas id="trendChart"
+            aria-label="Line chart showing product trend over time"></canvas>
+        </div>
+        <div class="empty-state" id="trendEmpty" hidden>
+          <span aria-hidden="true">📈</span>
+          <p>No production records yet.<br>Start logging output to see trends here.</p>
+        </div>
+      </section>
+
+    </div>
+<br>
+    <!-- ── Account section ────────────────────────────────────────────────── -->
+    <section class="profile-section" aria-labelledby="accountSectionTitle">
+      <h2 class="section-title" id="accountSectionTitle">Account settings</h2>
+
+      <div class="account-cards">
+
+        <!-- Account info -->
+        <div class="account-card">
+          <h3 class="account-card-title">Account</h3>
+          <div class="account-field">
+            <span class="account-field-label">Username</span>
+            <span class="account-field-value" id="accountUsername"></span>
+          </div>
+          <div class="account-field">
+            <span class="account-field-label">Email</span>
+            <span class="account-field-value account-field-muted"
+              id="accountEmail"></span>
+          </div>
+          <div class="account-field">
+            <span class="account-field-label">Member since</span>
+            <span class="account-field-value account-field-muted"
+              id="accountSince"></span>
+          </div>
+        </div>
+
+        <!-- Contact support -->
+        <div class="account-card">
+          <h3 class="account-card-title">Need help?</h3>
+          <p class="account-card-sub">
+            Reach out to the producIo team for support, feedback, or questions
+            about your account.
+          </p>
+          <a href="mailto:peaceukwuoma3@gmail.com" class="btn btn-ghost contact-btn">
+            <svg aria-hidden="true" viewBox="0 0 24 24" style="width:15px;height:15px">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Admin
+          </a>
+        </div>
+
+        <!-- Danger zone -->
+        <div class="account-card account-card-danger">
+          <h3 class="account-card-title danger-title">Danger zone</h3>
+          <p class="account-card-sub">
+            Permanently deletes your account and all associated data.
+            This action is irreversible.
+          </p>
+
+          <button class="btn btn-danger-outline" id="deleteAccountBtn">
+            Delete my account
+          </button>
+
+          <div class="delete-confirm" id="deleteConfirm" hidden>
+            <p class="delete-confirm-msg">
+              Type your email address to confirm deletion:
+            </p>
+            <input type="email" id="deleteConfirmInput"
+              class="delete-confirm-input"
+              placeholder="your@email.com"
+              autocomplete="off"
+              spellcheck="false">
+            <p class="delete-confirm-hint" id="deleteConfirmHint"></p>
+            <div class="delete-confirm-actions">
+              <button class="btn btn-ghost btn-sm"
+                id="deleteConfirmCancel">Cancel</button>
+              <button class="btn btn-danger btn-sm"
+                id="deleteConfirmOk" disabled>
+                <span class="btn-label">Delete account</span>
+                <span class="btn-spinner" hidden aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- end #dashContent -->
+
+</main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/username.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
