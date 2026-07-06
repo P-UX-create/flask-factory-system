@@ -63,7 +63,7 @@ async createProduct(req, res) {
 
     async getAllProducts(req, res) {
         try {
-            const products = await getAll();
+            const products = await getAll(req.user.id);
             res.json(products);
         } catch (err) {
             console.error(err);
