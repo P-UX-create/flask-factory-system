@@ -97,18 +97,47 @@ const login = async (req, res) => {
         });
 
 
-        const loginTime = new Date().toLocaleString("en-US", { timeZone: "UTC" }) + " UTC";
-        const device = req.headers["user-agent"] || "Unknown device";
-        const ipAddress = req.ip || req.headers["x-forwarded-for"] || "Unknown";
-        let location = "Unknown";
+const loginTime = new Date().toLocaleString("en-US", { timeZone: "UTC" }) + " UTC";
+const device = req.headers["user-agent"] || "Unknown device";
 
+let ipAddress = "Unknown";
+const forwardedFor = req.headers["x-forwarded-for"];
+
+if (forwardedFor) {
+
+    ipAddress = forwardedFor.split(',')[0].trim();
+} else {
+    ipAddress = req.ip || req.socket.remoteAddress || "Unknown";
+}
+
+
+if (ipAddress.includes("::ffff:")) {
+    ipAddress = ipAddress.replace("::ffff:", "");
+}
+
+let location = "Unknown";
+
+
+const isLocalhost = ipAddress === "::1" || ipAddress === "127.0.0.1" || ipAddress === "Unknown";
+
+if (!isLocalhost) {
     try {
         const geoRes = await fetch(`https://ipapi.co/${ipAddress}/json/`);
-        const geoData = await geoRes.json();
-        location = `${geoData.city}, ${geoData.country_name}`;
-    } catch {
-        // geolocation failed, location stays "Unknown"
+        
+        if (geoRes.ok) {
+            const geoData = await geoRes.json();
+          
+            if (geoData.city && geoData.country_name) {
+                location = `${geoData.city}, ${geoData.country_name}`;
+            } else if (geoData.error) {
+                console.error("GeoIP API Error:", geoData.reason);
+            }
+        }
+    } catch (error) {
+        console.error("Geolocation fetch failed:", error);
+        // location stays "Unknown"
     }
+}
 
      sendEmail(email, "New Login Detected", loginTemplate({
             loginTime,
