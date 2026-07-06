@@ -48,6 +48,7 @@ function initUsername(user) {
 
     input.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeEdit();
+      if (e.key === 'Enter') saveBtn?.click();
     });
 
     cancelBtn?.addEventListener('click', closeEdit);
@@ -143,7 +144,8 @@ function initUsername(user) {
       try {
         await apiFetch('/auth/me', { method: 'DELETE' });
         
-        window.location.replace('/');
+        loadDashboard();
+
       } catch (err) {
         
         deleteConfirmOk.disabled = false;

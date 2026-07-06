@@ -6,8 +6,6 @@ const validateResetToken = (req, res, next) => {
 
 const tokenData = resetTokens.get(token);
 
-console.log(token)
-console.log(tokenData)
   if (!tokenData) {
     return res.status(400).json({
       message: "Invalid token",

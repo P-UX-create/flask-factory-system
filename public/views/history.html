@@ -53,24 +53,25 @@
         <h1>History</h1>
         <p class="page-sub" id="activityCount">—</p>
       </div>
-      <!-- Filter toggle -->
-      <div class="filter-toggle" role="group" aria-label="Date range filter">
-        <button class="filter-toggle-btn is-active" data-days="7" id="filter7">
-          Last 7 days
+      <div class="page-header-actions">
+        <button class="btn btn-ghost btn-sm" id="exportPdfBtn" hidden>
+          <svg aria-hidden="true" viewBox="0 0 24 24" style="width:15px;height:15px">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5v-2z"/>
+          </svg>
+          Export PDF
         </button>
-        <button class="filter-toggle-btn" data-days="30" id="filter30">
-          Last 30 days
-        </button>
+        <div class="filter-toggle" role="group" aria-label="Date range filter">
+          <button class="filter-toggle-btn is-active" data-days="7" id="filter7">Last 7 days</button>
+          <button class="filter-toggle-btn" data-days="30" id="filter30">Last 30 days</button>
+        </div>
       </div>
     </div>
 
-    <!-- Page error -->
     <div class="page-error" id="pageError" hidden>
       <p id="pageErrorMsg">Failed to load history.</p>
       <button class="btn btn-ghost" id="retryBtn">Retry</button>
     </div>
 
-    <!-- Skeleton -->
     <div class="skeleton-wrap" id="skeletonWrap" aria-busy="true">
       <div class="skeleton sk-label"></div>
       <div class="history-list">
@@ -88,10 +89,8 @@
       </div>
     </div>
 
-    <!-- History feed -->
     <div id="historyFeed" hidden aria-live="polite"></div>
 
-    <!-- Empty states -->
     <div class="empty-state" id="emptyState" hidden>
       <span aria-hidden="true">🕘</span>
       <p id="emptyMsg">No activity in the last 7 days.</p>
@@ -99,9 +98,10 @@
 
   </main>
 
-  <div class="toast-container" id="toastContainer"
-    aria-live="polite" aria-atomic="false"></div>
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="false"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
   <script src="/js/api.js"></script>
   <script src="/js/nav.js"></script>
   <script src="/js/history.js"></script>

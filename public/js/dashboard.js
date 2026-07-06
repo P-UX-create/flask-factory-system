@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageErrorMsg = document.getElementById('pageErrorMsg');
   const retryBtn     = document.getElementById('retryBtn');
   const trendPeriod  = document.getElementById('trendPeriod');
+  const exportTrendPdf = document.getElementById('exportTrendPdf');
+  const exportDonutPdf = document.getElementById('exportDonutPdf');
 
   let state = { brands: [], trends: [] };
 
@@ -45,6 +47,73 @@ document.addEventListener('DOMContentLoaded', () => {
   if (trendPeriod) {
     trendPeriod.addEventListener('change', () => {
       renderTrend(state.trends, Number(trendPeriod.value));
+    });
+  }
+
+  if (exportTrendPdf) {
+    exportTrendPdf.addEventListener('click', () => {
+      const canvas = document.getElementById('trendChart');
+      if (!canvas) return;
+      const imgData = canvas.toDataURL('image/png');
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('landscape');
+      pdf.setFont('Helvetica', 'bold');
+      pdf.text('Product Trend Report', 14, 15);
+      pdf.addImage(imgData, 'PNG', 14, 25, 268, 140);
+      pdf.save('trend-chart.pdf');
+    });
+  }
+
+  if (exportDonutPdf) {
+    exportDonutPdf.addEventListener('click', () => {
+      const canvas = document.getElementById('donutChart');
+      if (!canvas) return;
+      const imgData = canvas.toDataURL('image/png');
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('portrait');
+      
+      // Title
+      pdf.setFont('Helvetica', 'bold');
+      pdf.setFontSize(16);
+      pdf.text('Production by Brand Report', 14, 15);
+      
+      // Render Pie Chart Image
+      pdf.addImage(imgData, 'PNG', 45, 25, 120, 120);
+      
+      // Add Color Guide/Legend Section
+      const top = state.brands.slice(0, 8);
+      if (top.length > 0) {
+        const values = top.map(b => b.totalQty || b.productCount || 0);
+        const total = values.reduce((s, v) => s + v, 0);
+        
+        let currentY = 160;
+        
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(12);
+        pdf.text('Brand Color Guide', 14, currentY);
+        currentY += 8;
+        
+        pdf.setFont('Helvetica', 'normal');
+        pdf.setFontSize(10);
+        
+        top.forEach((brand, i) => {
+          const brandQty = brand.totalQty || brand.productCount || 0;
+          const pct = total > 0 ? ((brandQty / total) * 100).toFixed(1) : 0;
+          const color = PALETTE[i % PALETTE.length];
+          
+          // Draw indicator color block
+          pdf.setFillColor(color);
+          pdf.rect(14, currentY - 3.5, 4, 4, 'F');
+          
+          // Draw text labels
+          pdf.setTextColor('#111418');
+          pdf.text(`${brand.name}: ${brandQty.toLocaleString()} units (${pct}%)`, 22, currentY);
+          
+          currentY += 6.5;
+        });
+      }
+      
+      pdf.save('brand-pie-chart.pdf');
     });
   }
 

@@ -24,7 +24,7 @@ const signUp = async(req, res) =>{
 
     if(user){
         return res.status(400).json({
-            message: "User already exists"
+            message: "Account already exists, please login"
         })
     }
 
@@ -73,7 +73,7 @@ const login = async (req, res) => {
         const user = await findByEmail(email);
 
         if (!user) {
-            res.status(401).json({ message: "Invalid credentials" });
+            res.status(401).json({ message: "Account doesn't exist or have been deleted" });
             return;
         }
         

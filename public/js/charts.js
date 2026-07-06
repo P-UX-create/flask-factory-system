@@ -1,6 +1,27 @@
 const PALETTE = [
-  '#5b8cff', '#f97316', '#10b981', '#f59e0b',
-  '#8b5cf6', '#ec4899', '#14b8a6', '#ef4444',
+  '#5B8CFF', '#EF4444', '#10B981', '#8B5CF6', '#F59E0B', '#14B8A6',
+  '#FFFFFF', '#1D4ED8', '#FF69B4', '#228B22', '#FF8C00', '#4B0082',
+  '#111827', '#FFD700', '#00CED1', '#A52A2A', '#ADD8E6', '#9370DB',
+  '#F97316', '#3B82F6', '#32CD32', '#EC4899', '#CD853F', '#F3F4F6',
+  '#000000', '#00FF00', '#FF0000', '#0000FF', '#FFFF00', '#00FFFF',
+  '#FF00FF', '#6EE7B7', '#C084FC', '#FCA5A5', '#FDE047', '#AFEEEE',
+  '#800000', '#008000', '#000080', '#808080', '#C0C0C0', '#F5F5DC',
+  '#DC143C', '#FF4500', '#FFA500', '#EAB308', '#34D399', '#60A5FA',
+  '#9932CC', '#F472B6', '#D2691E', '#708090', '#F0F8FF', '#FFF8DC',
+  '#8B0000', '#B22222', '#CD5C5C', '#F08080', '#FA8072', '#E9967A',
+  '#FB923C', '#FDBA74', '#FED7AA', '#FBBF24', '#FEF08A', '#FFFFE0',
+  '#006400', '#2E8B57', '#3CB371', '#00FF7F', '#7CFC00', '#9ACD32',
+  '#008080', '#20B2AA', '#2DD4BF', '#5EEAD4', '#99F6E4', '#40E0D0',
+  '#48D1CC', '#B0E0E6', '#87CEEB', '#87CEFA', '#4682B4', '#6495ED',
+  '#1E90FF', '#00BFFF', '#00008B', '#0000CD', '#2563EB', '#93C5FD',
+  '#BFDBFE', '#483D8B', '#6A5ACD', '#7B68EE', '#A855F7', '#D8B4FE',
+  '#E9D5FF', '#9400D3', '#BA55D3', '#DA70D6', '#EE82EE', '#DB7093',
+  '#FFC0CB', '#FF1493', '#FFB6C1', '#8B4513', '#A0522D', '#BC8F8F',
+  '#DEB887', '#D2B48C', '#F4A460', '#C19A6B', '#1F2937', '#374151',
+  '#4B5563', '#6B7280', '#9CA3AF', '#D1D5DB', '#E5E7EB', '#F9FAFB',
+  '#696969', '#A9A9A9', '#D3D3D3', '#778899', '#F8F8FF', '#FAFAFA',
+  '#FFFAFA', '#FFFFF0', '#FDF5E6', '#FAEBD7', '#FFEFD5', '#FFF5EE',
+  '#F0FFF0', '#F0FFFF', '#E6E6FA', '#556B2F', '#ADFF2F'
 ];
 
 function getAccentColor() {
@@ -32,12 +53,12 @@ function renderDonut(brands) {
 
   const top     = brands.slice(0, 8);
   const labels  = top.map(b => b.name);
-  const values  = top.map(b => b.totalQty);
+  const values  = top.map(b => b.totalQty || b.productCount || 0);
   const colors  = top.map((_, i) => PALETTE[i % PALETTE.length]);
   const total   = values.reduce((s, v) => s + v, 0);
 
   new Chart(canvas, {
-    type: 'doughnut',
+    type: 'pie',
     data: {
       labels,
       datasets: [{
@@ -48,7 +69,6 @@ function renderDonut(brands) {
       }],
     },
     options: {
-      cutout: '68%',
       animation: { animateRotate: true, duration: 700 },
       plugins: {
         legend: { display: false },
@@ -67,7 +87,8 @@ function renderDonut(brands) {
   if (legendEl) {
     legendEl.innerHTML = '';
     top.forEach((brand, i) => {
-      const pct = total > 0 ? ((brand.totalQty / total) * 100).toFixed(1) : 0;
+      const brandQty = brand.totalQty || brand.productCount || 0;
+      const pct = total > 0 ? ((brandQty / total) * 100).toFixed(1) : 0;
       const li = document.createElement('li');
       li.innerHTML = `
         <span class="legend-dot" style="background:${colors[i]}"></span>
