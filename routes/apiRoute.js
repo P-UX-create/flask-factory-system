@@ -14,7 +14,7 @@ const {
  getOneProduct,
  updateProduct,
  deleteProduct,
-}= require('../controllers/ProductController');
+}= require('../controllers/productController');
 
 // dashboard
 router.get("/dashboard", getDashboard);
