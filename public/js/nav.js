@@ -88,14 +88,46 @@
   });
 
   // ── Logout ────────────────────────────────────────────────────────────────
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', async () => {
-      try {
-        await apiFetch('/auth/logout', { method: 'POST' });
-      } catch { /* best effort */ }
-      finally {
-        window.location.replace('/');
-      }
-    });
-  }
+if (logoutBtn) {
+  const logoutConfirm  = document.getElementById('logoutConfirm');
+  const logoutCancel   = document.getElementById('logoutCancelBtn');
+  const logoutConfirmBtn = document.getElementById('logoutConfirmBtn');
+
+  logoutBtn.addEventListener('click', () => {
+    logoutConfirm.hidden = !logoutConfirm.hidden;
+  });
+
+  logoutCancel.addEventListener('click', () => {
+    logoutConfirm.hidden = true;
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !logoutConfirm.hidden) {
+      logoutConfirm.hidden = true;
+    }
+  });
+
+  document.addEventListener('click', e => {
+    const wrap = document.getElementById('navLogoutWrap');
+    if (wrap && !wrap.contains(e.target) && !logoutConfirm.hidden) {
+      logoutConfirm.hidden = true;
+    }
+  });
+
+  logoutConfirmBtn.addEventListener('click', async () => {
+    const label   = logoutConfirmBtn.querySelector('.btn-label');
+    const spinner = logoutConfirmBtn.querySelector('.btn-spinner');
+    logoutConfirmBtn.disabled = true;
+    spinner.hidden = false;
+    label.style.opacity = '0.6';
+
+    try {
+      await apiFetch('/auth/logout', { method: 'POST' });
+    } catch {
+      // Best effort — redirect regardless
+    } finally {
+      window.location.replace('/');
+    }
+  });
+}
 })();

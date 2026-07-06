@@ -38,7 +38,7 @@ function generateTokenEmail(link) {
                     letter-spacing:0.5px;
                   "
                 >
-                  ProducIo
+                  Stockly
                 </span>
               </td>
             </tr>
@@ -134,7 +134,7 @@ function generateTokenEmail(link) {
                   border-top:1px solid #1e293b;
                 "
               >
-                © ProducIo. All rights reserved.
+                © Stockly. All rights reserved.
               </td>
             </tr>
 

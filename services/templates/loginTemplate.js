@@ -35,7 +35,7 @@ function loginTemplate({ loginTime, device, location, ipAddress }) {
                     letter-spacing:0.5px;
                   "
                 >
-                  ProducIo
+                  Stockly
                 </span>
               </td>
             </tr>
@@ -62,7 +62,7 @@ function loginTemplate({ loginTime, device, location, ipAddress }) {
                     color:#cbd5e1;
                   "
                 >
-                  We noticed a successful login to your ProducIo account.
+                  We noticed a successful login to your Stockly account.
                 </p>
 
                 <p
@@ -155,7 +155,7 @@ function loginTemplate({ loginTime, device, location, ipAddress }) {
                   color:#64748b;
                 "
               >
-                This is an automated security notification from ProducIo.
+                This is an automated security notification from Stockly.
               </td>
             </tr>
 

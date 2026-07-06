@@ -1,77 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forgot Password — producIo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/auth.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forgot Password — Stockly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-<a class="skip-link" href="#main">Skip to main content</a>
+    <header class="auth-header">
+      <a href="/" class="logo">Stock<span>Ly</span></a>
+    </header>
 
-<header class="auth-header">
-  <a href="/" class="logo">produc<span>Io</span></a>
-</header>
+    <main id="main" class="auth-main">
+      <div class="auth-card">
+        <!-- Default: email form -->
+        <div id="formView">
+          <span class="auth-card-icon" aria-hidden="true">🔑</span>
+          <h1>Forgot your password?</h1>
+          <p class="auth-sub">
+            Enter the email on your account. If it exists, we'll send a reset
+            link valid for <strong>5 minutes</strong>.
+          </p>
 
-<main id="main" class="auth-main">
-  <div class="auth-card">
+          <div class="form-alert" id="formAlert" role="alert" hidden></div>
 
-    <!-- Default: email form -->
-    <div id="formView">
-      <span class="auth-card-icon" aria-hidden="true">🔑</span>
-      <h1>Forgot your password?</h1>
-      <p class="auth-sub">
-        Enter the email on your account. If it exists, we'll send a reset
-        link valid for <strong>5 minutes</strong>.
-      </p>
+          <form id="forgotForm" novalidate>
+            <div class="field">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                required
+                inputmode="email"
+              />
+              <span class="field-error" id="emailError"></span>
+            </div>
 
-      <div class="form-alert" id="formAlert" role="alert" hidden></div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-block"
+              id="submitBtn"
+            >
+              <span class="btn-label">Send reset link</span>
+              <span class="btn-spinner" hidden aria-hidden="true"></span>
+            </button>
+          </form>
 
-      <form id="forgotForm" novalidate>
-        <div class="field">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            autocomplete="email"
-            required
-            inputmode="email"
-          >
-          <span class="field-error" id="emailError"></span>
+          <p class="auth-switch"><a href="/login">← Back to log in</a></p>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
-          <span class="btn-label">Send reset link</span>
-          <span class="btn-spinner" hidden aria-hidden="true"></span>
-        </button>
-      </form>
+        <!-- Success: shown after submit regardless of email existence -->
+        <div id="successView" hidden>
+          <span class="auth-card-icon" aria-hidden="true">✉️</span>
+          <h1>Check your inbox</h1>
+          <p class="auth-sub">
+            If an account exists for <strong id="sentTo"></strong>, a reset link
+            has been sent. Check your spam folder if you don't see it.
+          </p>
+          <p class="auth-switch"><a href="/login">← Back to log in</a></p>
+        </div>
+      </div>
+    </main>
 
-      <p class="auth-switch"><a href="/login">← Back to log in</a></p>
-    </div>
+    <footer class="auth-footer">
+      <p>&copy; <span id="year"></span> Stockly. All rights reserved.</p>
+    </footer>
 
-    <!-- Success: shown after submit regardless of email existence -->
-    <div id="successView" hidden>
-      <span class="auth-card-icon" aria-hidden="true">✉️</span>
-      <h1>Check your inbox</h1>
-      <p class="auth-sub">
-        If an account exists for <strong id="sentTo"></strong>, a reset link
-        has been sent. Check your spam folder if you don't see it.
-      </p>
-      <p class="auth-switch"><a href="/login">← Back to log in</a></p>
-    </div>
-
-  </div>
-</main>
-
-<footer class="auth-footer">
-  <p>&copy; <span id="year"></span> producIo. All rights reserved.</p>
-</footer>
-
-<script src="/js/forgot.js"></script>
-</body>
+    <script src="/js/forgot.js"></script>
+  </body>
 </html>

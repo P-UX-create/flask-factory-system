@@ -1,171 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products — producIo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/dashboard.css">
-  <link rel="stylesheet" href="/css/products.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products — Stockly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/products.css" />
+  </head>
+  <body>
+    <button
+      class="nav-hamburger"
+      id="navHamburger"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="sideNav"
+    >
+      <span></span><span></span><span></span>
+    </button>
 
-  <button class="nav-hamburger" id="navHamburger"
-    aria-label="Open navigation" aria-expanded="false" aria-controls="sideNav">
-    <span></span><span></span><span></span>
-  </button>
-
-  <nav class="side-nav" id="sideNav" aria-label="Main navigation">
-    <div class="side-nav-inner">
-      <a href="/" class="nav-logo">produc<span>Io</span></a>
-      <ul class="nav-links">
-        <li><a href="/dashboard" class="nav-link" data-route="/dashboard">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-          <span>Dashboard</span>
-        </a></li>
-        <li><a href="/products" class="nav-link" data-route="/products">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.06 15.93 0 13.36 0c-1.33 0-2.52.58-3.36 1.5C9.16.58 7.97 0 6.64 0 4.07 0 2 2.06 2 4.64c0 .48.11.92.18 1.36H0v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V6zm-6.64-4c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H12.1A2.97 2.97 0 0 1 12 4.64C12 3.74 12.46 2 13.36 2zM6.64 2c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H6.26A2.97 2.97 0 0 1 6 4.64C6 3.74 6.74 2 6.64 2zM4 8h7v12H4V8zm9 12V8h7v12h-7z"/></svg>
-          <span>Products</span>
-        </a></li>
-        <li><a href="/brands" class="nav-link" data-route="/brands">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          <span>Brands</span>
-        </a></li>
-        <li><a href="/history" class="nav-link" data-route="/history">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.95-2.05L6.7 18.3A8.98 8.98 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
-          <span>History</span>
-        </a></li>
-      </ul>
-      <button class="nav-link nav-logout" id="logoutBtn">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
-        <span>Logout</span>
-      </button>
-    </div>
-  </nav>
-  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
-
-  <main class="dashboard-main" id="main">
-
-    <div class="page-header">
-      <div>
-        <h1>Products</h1>
-        <p class="page-sub" id="productCount">—</p>
+    <nav class="side-nav" id="sideNav" aria-label="Main navigation">
+      <div class="side-nav-inner">
+        <a href="/" class="nav-logo">Stock<span>Ly</span></a>
+        <ul class="nav-links">
+          <li>
+            <a href="/dashboard" class="nav-link" data-route="/dashboard">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path
+                  d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
+                />
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products" class="nav-link" data-route="/products">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path
+                  d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.06 15.93 0 13.36 0c-1.33 0-2.52.58-3.36 1.5C9.16.58 7.97 0 6.64 0 4.07 0 2 2.06 2 4.64c0 .48.11.92.18 1.36H0v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V6zm-6.64-4c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H12.1A2.97 2.97 0 0 1 12 4.64C12 3.74 12.46 2 13.36 2zM6.64 2c.9 0 1.64.74 1.64 1.64 0 .35-.1.68-.26.96H6.26A2.97 2.97 0 0 1 6 4.64C6 3.74 6.74 2 6.64 2zM4 8h7v12H4V8zm9 12V8h7v12h-7z"
+                />
+              </svg>
+              <span>Products</span>
+            </a>
+          </li>
+          <li>
+            <a href="/brands" class="nav-link" data-route="/brands">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                />
+              </svg>
+              <span>Brands</span>
+            </a>
+          </li>
+          <li>
+            <a href="/history" class="nav-link" data-route="/history">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path
+                  d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.95-2.05L6.7 18.3A8.98 8.98 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"
+                />
+              </svg>
+              <span>History</span>
+            </a>
+          </li>
+          <li>
+            <div class="nav-logout-wrap" id="navLogoutWrap">
+              <button class="nav-link nav-logout" id="logoutBtn">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path
+                    d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"
+                  />
+                </svg>
+                <span>Logout</span>
+              </button>
+              <div class="logout-confirm" id="logoutConfirm" hidden>
+                <p>Log out of Stockly?</p>
+                <div class="logout-confirm-actions">
+                  <button class="btn btn-ghost btn-sm" id="logoutCancelBtn">
+                    Cancel
+                  </button>
+                  <button class="btn btn-danger btn-sm" id="logoutConfirmBtn">
+                    <span class="btn-label">Log out</span>
+                    <span class="btn-spinner" hidden aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-      <button class="btn btn-primary" id="openCreateBtn">
-        <svg aria-hidden="true" viewBox="0 0 24 24" style="width:16px;height:16px">
-          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-        </svg>
-        New product
-      </button>
-    </div>
+    </nav>
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
-    <!-- Filters bar -->
-    <div class="filters-bar">
-      <div class="search-bar">
-        <svg aria-hidden="true" viewBox="0 0 24 24" class="search-icon">
-          <path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <input type="search" id="searchInput" placeholder="Search products…"
-          aria-label="Search products" autocomplete="off">
-        <button class="search-clear" id="searchClear" hidden aria-label="Clear search">✕</button>
-      </div>
-
-      <select id="filterCategory" aria-label="Filter by category">
-        <option value="">All categories</option>
-        <option>Beverages</option>
-        <option>Food &amp; Consumables</option>
-        <option>Pharmaceuticals</option>
-        <option>Cosmetics &amp; Personal Care</option>
-        <option>Electronics</option>
-        <option>Packaging</option>
-        <option>Textiles</option>
-        <option>Chemicals</option>
-        <option>Automotive Parts</option>
-        <option>Raw Materials</option>
-        <option>Other</option>
-      </select>
-
-      <select id="filterBrand" aria-label="Filter by brand">
-        <option value="">All brands</option>
-      </select>
-
-      <button class="btn btn-ghost btn-sm" id="clearFiltersBtn" hidden>
-        Clear filters
-      </button>
-    </div>
-
-    <!-- Page error -->
-    <div class="page-error" id="pageError" hidden>
-      <p id="pageErrorMsg">Failed to load products.</p>
-      <button class="btn btn-ghost" id="retryBtn">Retry</button>
-    </div>
-
-    <!-- Skeleton -->
-    <div class="skeleton-wrap" id="skeletonWrap" aria-busy="true">
-      <div class="products-grid">
-        <div class="skeleton sk-product-card"></div>
-        <div class="skeleton sk-product-card"></div>
-        <div class="skeleton sk-product-card"></div>
-        <div class="skeleton sk-product-card"></div>
-        <div class="skeleton sk-product-card"></div>
-        <div class="skeleton sk-product-card"></div>
-      </div>
-    </div>
-
-    <!-- Products grid -->
-    <div class="products-grid" id="productsGrid" hidden aria-live="polite"></div>
-
-    <!-- Empty states -->
-    <div class="empty-state" id="emptyAll" hidden>
-      <span aria-hidden="true">📦</span>
-      <p>No products yet.<br>Create your first one above.</p>
-    </div>
-    <div class="empty-state" id="emptyFiltered" hidden>
-      <span aria-hidden="true">🔍</span>
-      <p id="emptyFilteredMsg">No products match your filters.</p>
-    </div>
-
-  </main>
-
-  <!-- ── Create / Edit modal ──────────────────────────────────────────────── -->
-  <div class="modal-backdrop" id="modalBackdrop" hidden aria-hidden="true"></div>
-  <div class="modal" id="productModal" hidden role="dialog"
-    aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-header">
-      <h2 id="modalTitle">New product</h2>
-      <button class="modal-close" id="modalClose" aria-label="Close">
-        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"
-          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-
-    <div class="form-alert" id="modalAlert" role="alert" hidden></div>
-
-    <form id="productForm" novalidate>
-      <input type="hidden" id="productId">
-
-      <div class="field">
-        <label for="fieldName">Product name</label>
-        <input type="text" id="fieldName" maxlength="255"
-          autocomplete="off" required placeholder="e.g. Coca-Cola 500ml">
-        <span class="field-error" id="fieldNameError"></span>
+    <main class="dashboard-main" id="main">
+      <div class="page-header">
+        <div>
+          <h1>Products</h1>
+          <p class="page-sub" id="productCount">—</p>
+        </div>
+        <button class="btn btn-primary" id="openCreateBtn">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            style="width: 16px; height: 16px"
+          >
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+          </svg>
+          New product
+        </button>
       </div>
 
-      <div class="field">
-        <label for="fieldBrand">Brand</label>
-        <select id="fieldBrand" required>
-          <option value="">Select a brand…</option>
-        </select>
-        <span class="field-error" id="fieldBrandError"></span>
-      </div>
+      <!-- Filters bar -->
+      <div class="filters-bar">
+        <div class="search-bar">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="search-icon">
+            <path
+              d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search products…"
+            aria-label="Search products"
+            autocomplete="off"
+          />
+          <button
+            class="search-clear"
+            id="searchClear"
+            hidden
+            aria-label="Clear search"
+          >
+            ✕
+          </button>
+        </div>
 
-      <div class="field">
-        <label for="fieldCategory">Category</label>
-        <select id="fieldCategory" required>
-          <option value="">Select a category…</option>
+        <select id="filterCategory" aria-label="Filter by category">
+          <option value="">All categories</option>
           <option>Beverages</option>
           <option>Food &amp; Consumables</option>
           <option>Pharmaceuticals</option>
@@ -178,88 +158,246 @@
           <option>Raw Materials</option>
           <option>Other</option>
         </select>
-        <span class="field-error" id="fieldCategoryError"></span>
-      </div>
 
-      <div class="field">
-        <label for="fieldStock">Stock quantity</label>
-        <input type="number" id="fieldStock" min="0" step="1"
-          required placeholder="1">
-        <span class="field-error" id="fieldStockError"></span>
-      </div>
+        <select id="filterBrand" aria-label="Filter by brand">
+          <option value="">All brands</option>
+        </select>
 
-      <div class="modal-actions">
-        <button type="button" class="btn btn-ghost" id="modalCancelBtn">Cancel</button>
-        <button type="submit" class="btn btn-primary" id="modalSubmitBtn">
-          <span class="btn-label">Create product</span>
-          <span class="btn-spinner" hidden aria-hidden="true"></span>
+        <button class="btn btn-ghost btn-sm" id="clearFiltersBtn" hidden>
+          Clear filters
         </button>
       </div>
-    </form>
-  </div>
 
-  <!-- ── Product detail overlay ───────────────────────────────────────────── -->
-  <div class="detail-backdrop" id="detailBackdrop" hidden aria-hidden="true"></div>
-  <div class="detail-panel" id="detailPanel" hidden role="dialog"
-    aria-modal="true" aria-labelledby="detailName">
-    <button class="detail-close" id="detailClose" aria-label="Close detail">
-      <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-
-    <div class="detail-category-badge" id="detailCategory"></div>
-    <h2 class="detail-name" id="detailName"></h2>
-    <p class="detail-brand" id="detailBrand"></p>
-
-    <div class="detail-stats">
-      <div class="detail-stat">
-        <span class="detail-stat-label">Stock</span>
-        <span class="detail-stat-value" id="detailStock"></span>
+      <!-- Page error -->
+      <div class="page-error" id="pageError" hidden>
+        <p id="pageErrorMsg">Failed to load products.</p>
+        <button class="btn btn-ghost" id="retryBtn">Retry</button>
       </div>
-      <div class="detail-stat">
-        <span class="detail-stat-label">Added</span>
-        <span class="detail-stat-value" id="detailCreated"></span>
-      </div>
-      <div class="detail-stat">
-        <span class="detail-stat-label">Updated</span>
-        <span class="detail-stat-value" id="detailUpdated"></span>
-      </div>
-    </div>
 
-    <div class="detail-actions">
-      <button class="btn btn-ghost" id="detailEditBtn">
-        <svg viewBox="0 0 24 24" style="width:15px;height:15px">
-          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-        </svg>
-        Edit
-      </button>
-      <button class="btn btn-danger btn-sm" id="detailDeleteBtn">
-        <svg viewBox="0 0 24 24" style="width:15px;height:15px">
-          <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
-        </svg>
-        Delete
-      </button>
-    </div>
+      <!-- Skeleton -->
+      <div class="skeleton-wrap" id="skeletonWrap" aria-busy="true">
+        <div class="products-grid">
+          <div class="skeleton sk-product-card"></div>
+          <div class="skeleton sk-product-card"></div>
+          <div class="skeleton sk-product-card"></div>
+          <div class="skeleton sk-product-card"></div>
+          <div class="skeleton sk-product-card"></div>
+          <div class="skeleton sk-product-card"></div>
+        </div>
+      </div>
 
-    <!-- Inline delete confirm -->
-    <div class="detail-confirm" id="detailConfirm" hidden>
-      <p>Delete <strong id="detailConfirmName"></strong>? This cannot be undone.</p>
-      <div class="detail-confirm-actions">
-        <button class="btn btn-ghost btn-sm" id="detailConfirmCancel">Cancel</button>
-        <button class="btn btn-danger btn-sm" id="detailConfirmOk">
-          <span class="btn-label">Delete</span>
-          <span class="btn-spinner" hidden aria-hidden="true"></span>
+      <!-- Products grid -->
+      <div
+        class="products-grid"
+        id="productsGrid"
+        hidden
+        aria-live="polite"
+      ></div>
+
+      <!-- Empty states -->
+      <div class="empty-state" id="emptyAll" hidden>
+        <span aria-hidden="true">📦</span>
+        <p>No products yet.<br />Create your first one above.</p>
+      </div>
+      <div class="empty-state" id="emptyFiltered" hidden>
+        <span aria-hidden="true">🔍</span>
+        <p id="emptyFilteredMsg">No products match your filters.</p>
+      </div>
+    </main>
+
+    <!-- ── Create / Edit modal ──────────────────────────────────────────────── -->
+    <div
+      class="modal-backdrop"
+      id="modalBackdrop"
+      hidden
+      aria-hidden="true"
+    ></div>
+    <div
+      class="modal"
+      id="productModal"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-header">
+        <h2 id="modalTitle">New product</h2>
+        <button class="modal-close" id="modalClose" aria-label="Close">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M18 6L6 18M6 6l12 12"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
         </button>
       </div>
+
+      <div class="form-alert" id="modalAlert" role="alert" hidden></div>
+
+      <form id="productForm" novalidate>
+        <input type="hidden" id="productId" />
+
+        <div class="field">
+          <label for="fieldName">Product name</label>
+          <input
+            type="text"
+            id="fieldName"
+            maxlength="255"
+            autocomplete="off"
+            required
+            placeholder="e.g. Coca-Cola 500ml"
+          />
+          <span class="field-error" id="fieldNameError"></span>
+        </div>
+
+        <div class="field">
+          <label for="fieldBrand">Brand</label>
+          <select id="fieldBrand" required>
+            <option value="">Select a brand…</option>
+          </select>
+          <span class="field-error" id="fieldBrandError"></span>
+        </div>
+
+        <div class="field">
+          <label for="fieldCategory">Category</label>
+          <select id="fieldCategory" required>
+            <option value="">Select a category…</option>
+            <option>Beverages</option>
+            <option>Food &amp; Consumables</option>
+            <option>Pharmaceuticals</option>
+            <option>Cosmetics &amp; Personal Care</option>
+            <option>Electronics</option>
+            <option>Packaging</option>
+            <option>Textiles</option>
+            <option>Chemicals</option>
+            <option>Automotive Parts</option>
+            <option>Raw Materials</option>
+            <option>Other</option>
+          </select>
+          <span class="field-error" id="fieldCategoryError"></span>
+        </div>
+
+        <div class="field">
+          <label for="fieldStock">Stock quantity</label>
+          <input
+            type="number"
+            id="fieldStock"
+            min="0"
+            step="1"
+            required
+            placeholder="1"
+          />
+          <span class="field-error" id="fieldStockError"></span>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="modalCancelBtn">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary" id="modalSubmitBtn">
+            <span class="btn-label">Create product</span>
+            <span class="btn-spinner" hidden aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
     </div>
-  </div>
 
-  <!-- Toast container -->
-  <div class="toast-container" id="toastContainer"
-    aria-live="polite" aria-atomic="false"></div>
+    <!-- ── Product detail overlay ───────────────────────────────────────────── -->
+    <div
+      class="detail-backdrop"
+      id="detailBackdrop"
+      hidden
+      aria-hidden="true"
+    ></div>
+    <div
+      class="detail-panel"
+      id="detailPanel"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="detailName"
+    >
+      <button class="detail-close" id="detailClose" aria-label="Close detail">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M18 6L6 18M6 6l12 12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
 
-  <script src="/js/api.js"></script>
-  <script src="/js/nav.js"></script>
-  <script src="/js/products.js"></script>
-</body>
+      <div class="detail-category-badge" id="detailCategory"></div>
+      <h2 class="detail-name" id="detailName"></h2>
+      <p class="detail-brand" id="detailBrand"></p>
+
+      <div class="detail-stats">
+        <div class="detail-stat">
+          <span class="detail-stat-label">Stock</span>
+          <span class="detail-stat-value" id="detailStock"></span>
+        </div>
+        <div class="detail-stat">
+          <span class="detail-stat-label">Added</span>
+          <span class="detail-stat-value" id="detailCreated"></span>
+        </div>
+        <div class="detail-stat">
+          <span class="detail-stat-label">Updated</span>
+          <span class="detail-stat-value" id="detailUpdated"></span>
+        </div>
+      </div>
+
+      <div class="detail-actions">
+        <button class="btn btn-ghost" id="detailEditBtn">
+          <svg viewBox="0 0 24 24" style="width: 15px; height: 15px">
+            <path
+              d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+            />
+          </svg>
+          Edit
+        </button>
+        <button class="btn btn-danger btn-sm" id="detailDeleteBtn">
+          <svg viewBox="0 0 24 24" style="width: 15px; height: 15px">
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+            />
+          </svg>
+          Delete
+        </button>
+      </div>
+
+      <!-- Inline delete confirm -->
+      <div class="detail-confirm" id="detailConfirm" hidden>
+        <p>
+          Delete <strong id="detailConfirmName"></strong>? This cannot be
+          undone.
+        </p>
+        <div class="detail-confirm-actions">
+          <button class="btn btn-ghost btn-sm" id="detailConfirmCancel">
+            Cancel
+          </button>
+          <button class="btn btn-danger btn-sm" id="detailConfirmOk">
+            <span class="btn-label">Delete</span>
+            <span class="btn-spinner" hidden aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast container -->
+    <div
+      class="toast-container"
+      id="toastContainer"
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/products.js"></script>
+  </body>
 </html>

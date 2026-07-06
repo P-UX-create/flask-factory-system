@@ -35,7 +35,7 @@ function announcementTemplate({ title, body }) {
                     letter-spacing:0.5px;
                   "
                 >
-                  ProducIo
+                  Stockly
                 </span>
               </td>
             </tr>
@@ -79,7 +79,7 @@ function announcementTemplate({ title, body }) {
                   color:#64748b;
                 "
               >
-                Thank you for being part of ProducIo.
+                Thank you for being part of Stockly.
               </td>
             </tr>
 

@@ -1,110 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set New Password — producIo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/auth.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set New Password — Stockly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-<a class="skip-link" href="#main">Skip to main content</a>
+    <header class="auth-header">
+      <a href="/" class="logo">Stock<span>Ly</span></a>
+    </header>
 
-<header class="auth-header">
-  <a href="/" class="logo">produc<span>Io</span></a>
-</header>
-
-<main id="main" class="auth-main">
-  <div class="auth-card">
-
-    <!-- Shown if token is absent or malformed on page load -->
-    <div id="invalidView" hidden>
-      <span class="auth-card-icon error-icon" aria-hidden="true">⚠️</span>
-      <h1>Invalid reset link</h1>
-      <p class="auth-sub">
-        This link is missing or malformed. Please request a fresh reset link.
-      </p>
-      <a href="/forgot" class="btn btn-primary btn-block" style="margin-top:1.2rem">
-        Request new link
-      </a>
-    </div>
-
-    <!-- Main form — shown when a plausible token is present -->
-    <div id="formView" hidden>
-      <span class="auth-card-icon" aria-hidden="true">🔒</span>
-      <h1>Set a new password</h1>
-      <p class="auth-sub">Choose a strong password for your producIo account.</p>
-
-      <div class="form-alert" id="formAlert" role="alert" hidden></div>
-
-      <form id="resetForm" novalidate>
-        <div class="field">
-          <label for="password">New password</label>
-          <div class="password-wrap">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              autocomplete="new-password"
-              required
-              minlength="6"
-            >
-            <button
-              type="button"
-              class="password-toggle"
-              aria-label="Show password"
-            >Show</button>
-          </div>
-          <span class="field-hint">At least 6 characters.</span>
-          <span class="field-error" id="passwordError"></span>
+    <main id="main" class="auth-main">
+      <div class="auth-card">
+        <!-- Shown if token is absent or malformed on page load -->
+        <div id="invalidView" hidden>
+          <span class="auth-card-icon error-icon" aria-hidden="true">⚠️</span>
+          <h1>Invalid reset link</h1>
+          <p class="auth-sub">
+            This link is missing or malformed. Please request a fresh reset
+            link.
+          </p>
+          <a
+            href="/forgot"
+            class="btn btn-primary btn-block"
+            style="margin-top: 1.2rem"
+          >
+            Request new link
+          </a>
         </div>
 
-        <div class="field">
-          <label for="confirmPassword">Confirm new password</label>
-          <div class="password-wrap">
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              autocomplete="new-password"
-              required
-            >
+        <!-- Main form — shown when a plausible token is present -->
+        <div id="formView" hidden>
+          <span class="auth-card-icon" aria-hidden="true">🔒</span>
+          <h1>Set a new password</h1>
+          <p class="auth-sub">
+            Choose a strong password for your Stockly account.
+          </p>
+
+          <div class="form-alert" id="formAlert" role="alert" hidden></div>
+
+          <form id="resetForm" novalidate>
+            <div class="field">
+              <label for="password">New password</label>
+              <div class="password-wrap">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  autocomplete="new-password"
+                  required
+                  minlength="6"
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  aria-label="Show password"
+                >
+                  Show
+                </button>
+              </div>
+              <span class="field-hint">At least 6 characters.</span>
+              <span class="field-error" id="passwordError"></span>
+            </div>
+
+            <div class="field">
+              <label for="confirmPassword">Confirm new password</label>
+              <div class="password-wrap">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  autocomplete="new-password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  aria-label="Show confirm password"
+                >
+                  Show
+                </button>
+              </div>
+              <span class="field-error" id="confirmPasswordError"></span>
+            </div>
+
             <button
-              type="button"
-              class="password-toggle"
-              aria-label="Show confirm password"
-            >Show</button>
-          </div>
-          <span class="field-error" id="confirmPasswordError"></span>
+              type="submit"
+              class="btn btn-primary btn-block"
+              id="submitBtn"
+            >
+              <span class="btn-label">Set new password</span>
+              <span class="btn-spinner" hidden aria-hidden="true"></span>
+            </button>
+          </form>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
-          <span class="btn-label">Set new password</span>
-          <span class="btn-spinner" hidden aria-hidden="true"></span>
-        </button>
-      </form>
-    </div>
+        <!-- Success state -->
+        <div id="successView" hidden>
+          <span class="auth-card-icon" aria-hidden="true">✅</span>
+          <h1>Password updated</h1>
+          <p class="auth-sub">
+            Your password has been reset successfully. Redirecting you to log
+            in…
+          </p>
+        </div>
+      </div>
+    </main>
 
-    <!-- Success state -->
-    <div id="successView" hidden>
-      <span class="auth-card-icon" aria-hidden="true">✅</span>
-      <h1>Password updated</h1>
-      <p class="auth-sub">
-        Your password has been reset successfully.
-        Redirecting you to log in…
-      </p>
-    </div>
+    <footer class="auth-footer">
+      <p>&copy; <span id="year"></span> Stockly. All rights reserved.</p>
+    </footer>
 
-  </div>
-</main>
-
-<footer class="auth-footer">
-  <p>&copy; <span id="year"></span> producIo. All rights reserved.</p>
-</footer>
-
-<script src="/js/reset.js"></script>
-</body>
+    <script src="/js/reset.js"></script>
+  </body>
 </html>

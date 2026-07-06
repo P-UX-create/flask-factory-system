@@ -73,7 +73,7 @@ const login = async (req, res) => {
         const user = await findByEmail(email);
 
         if (!user) {
-            res.status(401).json({ message: "Account doesn't exist or have been deleted" });
+            res.status(401).json({ message: "Account doesn't exist or has been deleted" });
             return;
         }
         
